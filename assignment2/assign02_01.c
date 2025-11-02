@@ -118,6 +118,7 @@ int main()
                 break;
         }
     } 
-    while (choice>=1 && choice<=3);
+    while (choice>=1 && choice<3);
     return 0;
 }
+
