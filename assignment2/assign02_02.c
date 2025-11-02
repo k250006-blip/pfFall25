@@ -69,9 +69,6 @@ void updateinventory(int Productcode[], int codelen, int *Quantity, int quan_len
         }
         
     }
-
-
-
     if(!product)    //if product not found --> 0
         {
             printf("\nProduct does not exist\n");
@@ -227,8 +224,11 @@ int main()
                 break;
             case 7:
                 break;
+            default:
+                break;
         }
     } 
     while (choice>=1 && choice<7);
     return 0;
+
 }
