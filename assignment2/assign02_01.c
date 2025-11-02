@@ -1,15 +1,16 @@
 #include<stdio.h>
 
+//function no. 1
 void AddnewBook(int isbns[], int quantities[], char titles[][50], float prices[], int* bookcount)
 {
     int bookcode;   //bookcode stores isbn.....
     printf("\nEnter a new ISBN: ");   
     scanf("%d",&bookcode);
 
-    int i=0;          //counter for loop  
+    int i=0;          
     for(int i=0; i<*bookcount; i++) 
     {
-        if(isbns[i] == bookcode)   //checks the first isbn with the array of isbns at position '0'
+        if(isbns[i] == bookcode)   
         {
             printf("\nThis book already exists.");
             return;
@@ -17,7 +18,7 @@ void AddnewBook(int isbns[], int quantities[], char titles[][50], float prices[]
     }
     isbns[*bookcount]=bookcode;      //stores the first isbn in the array isbns at a position that would correspond with other arrays
     printf("Enter Book Title: ");   
-    scanf(" %[^\n]",titles[*bookcount]);         //stores string........'\n' removed
+    scanf(" %[^\n]",titles[*bookcount]);         
     printf("Enter Book Price: ");
     scanf("%f",&prices[*bookcount]);
     printf("Enter Book Quantity: ");
@@ -25,7 +26,6 @@ void AddnewBook(int isbns[], int quantities[], char titles[][50], float prices[]
     printf("Book added successfully!\n");
     printf("\n------------------------------------------------------------------");
     (*bookcount)++; 
-
     if (*bookcount>=100) 
     {
         printf("No new books can be added.");
@@ -33,6 +33,7 @@ void AddnewBook(int isbns[], int quantities[], char titles[][50], float prices[]
     }
 }
 
+//function no. 2
 void ProcessSale(int isbns[], int quantities[], int bookcount)
 {
     int bookcode, number;
@@ -61,7 +62,6 @@ void ProcessSale(int isbns[], int quantities[], int bookcount)
             break;
         }
     }
-
     if(!available) 
     {
         printf("\nBook not found.");
@@ -69,6 +69,7 @@ void ProcessSale(int isbns[], int quantities[], int bookcount)
     }
 }
 
+//function no. 3
 void GenerateReport(int isbns[], int quantities[], char titles[][50], float prices[], int bookcount)
 {
     printf("\n===Low Stock Report===\n"); 
@@ -82,7 +83,6 @@ void GenerateReport(int isbns[], int quantities[], char titles[][50], float pric
             printf("\n------------------------------------------------------------------");
         } 
     } 
-
     if(!availability) 
     { 
         printf("\nAll books are sufficiently stocked."); 
