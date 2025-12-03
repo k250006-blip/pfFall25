@@ -26,7 +26,10 @@ void displayEmployees(EmployeeInfo employee[], int loop, int n)
 //highest salary to evaluate seniority and bonuses.
 void findHighestSalary(EmployeeInfo employee[], int n)
 {
-    int maximumSalary=0;
+    //this is store the position of the element with max salary
+    int maximumSalary=0; 
+    
+    //finding max element in array
     float max=employee[0].salary;
 
     for (int i = 0; i < n; i++)
@@ -76,7 +79,7 @@ void searchEmployee(EmployeeInfo employee[], int n)
         case 2:
             printf("\nEnter Employee Name: ");
             scanf("%s", Name);  //no '&' bcs its alr a string
-            while (getchar()!='\n');
+            while (getchar()!='\n');    //remove or exempting any extra '\n'
             printf("\nSearched Employee Record(s) wrt Name: \n");
             printf("-----------------------------------------------------\n");
             printf("%5s %8s %14s %10s\n","EmployeeID","Name","Designation","Salary");
@@ -97,7 +100,7 @@ void searchEmployee(EmployeeInfo employee[], int n)
         default:
             break;
         }
-    } while (!(choice==1 || choice==2));
+    } while (!(choice==1 || choice==2));   
 }
 
 //function no. 4
