@@ -4,6 +4,8 @@ int calculateFuel(int fuel, int consumption, int recharge, int solarBonus, int p
     {
         return fuel;
     }
+    //fuel finished OR planets travlled...stop
+    
     //general fuel maths for eachy planet
     fuel-=consumption+recharge;
 
@@ -29,6 +31,5 @@ int main()
         printf("\nJourney Completed Successfully!\n");
     else
         printf("\nFuel Exhausted Before Reaching Last Planet.\n");
-
     return 0;
 }
