@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 //structure no. 1
 typedef struct{
     int BookID,popularityScore,recentlyAccessed;
