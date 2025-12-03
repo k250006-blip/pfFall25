@@ -5,7 +5,7 @@ float calculateRepayment(float loan, float interestRate, int years){
     {
         return 0;
     }
-    //this will end if year is 0
+    //this will end when year bcms 0
 
     printf("\nEnter additional payment for year %d IF there: ",years);
     scanf("%f",&additional_payment);
@@ -18,12 +18,13 @@ float calculateRepayment(float loan, float interestRate, int years){
         remainingLoan= loan-newinstallment;   //paid each year
         interest_loan= remainingLoan * interestRate + (remainingLoan);  //interest on remaining loan
     }
+    //if no amount then this block will be executed
     else{
         newinstallment= installment;
         remainingLoan= loan-newinstallment;   //paid each year
         interest_loan= remainingLoan * interestRate + (remainingLoan);  //interest on remaining loan 
     }
-
+    //final calc
     totalrepayment= calculateRepayment(interest_loan,interestRate,years-1); //recursion statement
     printf("\nYear %d: Remaining loan = %.2f",years,interest_loan);  //prints years with remaining loan
     return totalrepayment+newinstallment;   //function calls itself...recursion occurs
