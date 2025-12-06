@@ -8,16 +8,22 @@ typedef struct{
     char fullName[100],batch[20],membership[10],regDate[12],dob[12],interest[10];
 } Student;
 
-Student *db = NULL;
-int dbCount = 0;
+Student *db = NULL;  //DMA
+int dbCount = 0;    //total number of records
+
+//function no. 1
 void loadDatabase(const char *filename) 
 {
+    //Open file
     FILE *fp = fopen(filename, "rb");
     if (!fp) return;  
     fseek(fp, 0, SEEK_END);
     long size = ftell(fp);
     rewind(fp);
+    
+    //Calculate record count
     dbCount = size / sizeof(Student);
+    
     if (dbCount > 0) 
     {
         db = (Student *) malloc(dbCount * sizeof(Student));
@@ -26,6 +32,7 @@ void loadDatabase(const char *filename)
     fclose(fp);
 }
 
+//function no. 2
 void saveDatabase(const char *filename) 
 {
     FILE *fp = fopen(filename, "wb");
@@ -34,10 +41,13 @@ void saveDatabase(const char *filename)
         printf("Error: Cannot save database.\n");
         return;
     }
+    //overwrites file with the current records
     fwrite(db, sizeof(Student), dbCount, fp);
     fclose(fp);
 }
 
+//function no. 3
+//Duplicate Student ID check
 int existsID(int id) 
 {
     for (int i = 0; i < dbCount; i++)
@@ -46,6 +56,7 @@ int existsID(int id)
     return 0;
 }
 
+//function no. 4
 void addStudent(const char *filename) 
 {
     Student s;
@@ -77,6 +88,7 @@ void addStudent(const char *filename)
     printf("Student Registered Successfully!\n");
 }
 
+//function no. 5
 void updateStudent(const char *filename) 
 {
     int id;
@@ -97,6 +109,7 @@ void updateStudent(const char *filename)
     printf("Record not found.\n");
 }
 
+//function no. 6
 void deleteStudent(const char *filename) 
 {
     int id, found = -1;
@@ -122,6 +135,7 @@ void deleteStudent(const char *filename)
     printf("Record Deleted Successfully!\n");
 }
 
+//function no. 7
 void viewAll() 
 {
     if (dbCount == 0) 
@@ -135,6 +149,7 @@ void viewAll()
     }
 }
 
+//function no. 8
 void batchReport() 
 {
     char batch[20], type[10];
