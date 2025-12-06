@@ -5,12 +5,13 @@
 
 void insertLine(char **lines[], int *count, int *capacity, int index, const char *text) 
 {
+    //inserting text outside range not possible
     if (index < 0 || index > *count) {
         printf("Invalid index!\n");
         return;
     }
 
-    // Grow array if needed
+    // Grow array if needed acc to text
     if (*count == *capacity) {
         *capacity = *capacity * 2;
         char **temp = realloc(*lines, (*capacity) * sizeof(char*));
@@ -68,16 +69,19 @@ void printAllLines(char **lines, int count)
 
 void saveToFile(char **lines, int count) 
 {
+    //opens file...user writes
     FILE *fp = fopen("output.txt", "w");
     if (!fp) {
         perror("File open failed");
         return;
     }
 
+    //line by line writing
     for (int i = 0; i < count; i++) {
         fprintf(fp, "%s\n", lines[i]);
     }
 
+    //Close file
     fclose(fp);
     printf("Saved to output.txt\n");
 }
@@ -232,4 +236,5 @@ int main()
             printf("Invalid choice.\n");
     }
     return 0;
+
 }
